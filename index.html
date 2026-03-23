@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Login - Roadside Assistance</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial;
+    background: linear-gradient(135deg, #1e3c72, #2a5298);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Glass Box */
+.login-box {
+    background: rgba(255,255,255,0.1);
+    backdrop-filter: blur(10px);
+    padding: 30px;
+    border-radius: 15px;
+    width: 300px;
+    color: white;
+    text-align: center;
+    box-shadow: 0 0 20px rgba(0,0,0,0.3);
+}
+
+h2 {
+    margin-bottom: 20px;
+}
+
+/* Input Fields */
+input {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 5px;
+}
+
+/* Button */
+button {
+    width: 100%;
+    padding: 10px;
+    background: orange;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+button:hover {
+    background: #ff9800;
+}
+
+/* Extras */
+.options {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+}
+
+.error {
+    color: red;
+    font-size: 13px;
+}
+
+.success {
+    color: lightgreen;
+    font-size: 14px;
+}
+
+.loading {
+    display: none;
+    margin-top: 10px;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="login-box">
+    <h2>🚗 Login</h2>
+
+    <!-- Step 1: Username -->
+    <input type="text" id="username" placeholder="Email or Phone">
+
+    <!-- Step 2: Password -->
+    <div style="position: relative;">
+        <input type="password" id="password" placeholder="Password">
+        <span onclick="togglePassword()" 
+              style="position:absolute; right:10px; top:10px; cursor:pointer;">👁️</span>
+    </div>
+
+    <!-- Options -->
+    <div class="options">
+        <label><input type="checkbox"> Remember</label>
+        <a href="#" style="color:white;">Forgot?</a>
+    </div>
+
+    <!-- Error Message -->
+    <p id="error" class="error"></p>
+
+    <!-- Success -->
+    <p id="success" class="success"></p>
+
+    <!-- Button -->
+    <button onclick="login()">Login</button>
+
+    <!-- Loading -->
+    <p id="loading" class="loading">⏳ Checking...</p>
+
+</div>
+
+<script>
+function togglePassword() {
+    let pass = document.getElementById("password");
+    pass.type = pass.type === "password" ? "text" : "password";
+}
+
+function login() {
+    let user = document.getElementById("username").value;
+    let pass = document.getElementById("password").value;
+
+    let error = document.getElementById("error");
+    let success = document.getElementById("success");
+    let loading = document.getElementById("loading");
+
+    error.innerHTML = "";
+    success.innerHTML = "";
+
+    // STEP 1: Empty check
+    if (user === "" || pass === "") {
+        error.innerHTML = "⚠️ Please fill all fields";
+        return;
+    }
+
+    // STEP 2: Validate email/phone
+    if (!user.includes("@") && user.length < 10) {
+        error.innerHTML = "⚠️ Enter valid Email or Phone";
+        return;
+    }
+
+    // STEP 3: Password length
+    if (pass.length < 6) {
+        error.innerHTML = "⚠️ Password must be at least 6 characters";
+        return;
+    }
+
+    // STEP 4: Show loading
+    loading.style.display = "block";
+
+    // STEP 5: Fake login process
+    setTimeout(() => {
+        loading.style.display = "none";
+        success.innerHTML = "✅ Login Successful!";
+
+        // Redirect
+        setTimeout(() => {
+            window.location.href = "dashboard.html";
+        }, 1500);
+
+    }, 2000);
+}
+</script>
+
+</body>
+</html>
