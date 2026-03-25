@@ -2,7 +2,7 @@
 
 from flask import Blueprint, request, jsonify
 from app.models import Mechanic
-from app.config.db_config import db
+from config import db
 
 mechanic_bp = Blueprint('mechanic_bp', __name__)
 

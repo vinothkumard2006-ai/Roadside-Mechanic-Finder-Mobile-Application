@@ -2,7 +2,7 @@
 
 from flask import Blueprint, request, jsonify
 from app.models import Review
-from app.config.db_config import db
+from config import db
 
 review_bp = Blueprint('review_bp', __name__)
 

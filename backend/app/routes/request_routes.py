@@ -2,7 +2,7 @@
 
 from flask import Blueprint, request, jsonify
 from app.models import ServiceRequest
-from app.config.db_config import db
+from config import db
 
 request_bp = Blueprint('request_bp', __name__)
 
