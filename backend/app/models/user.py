@@ -1,7 +1,7 @@
 # user.py
 
 from datetime import datetime
-from app.config.db_config import db
+from config import db
 
 class User(db.Model):
     __tablename__ = 'users'

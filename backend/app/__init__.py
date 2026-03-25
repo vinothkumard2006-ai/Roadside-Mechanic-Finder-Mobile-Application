@@ -1,5 +1,5 @@
 from flask import Flask
-from app.config.db_config import db
+from config import db
 
 from app.routes.user_routes import user_bp
 from app.routes.mechanic_routes import mechanic_bp

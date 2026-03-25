@@ -1,7 +1,7 @@
 # payment.py
 
 from datetime import datetime
-from app.config.db_config import db
+from config import db
 
 class Payment(db.Model):
     __tablename__ = 'payments'

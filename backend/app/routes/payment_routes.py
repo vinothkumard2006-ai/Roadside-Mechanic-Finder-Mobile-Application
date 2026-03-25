@@ -2,7 +2,7 @@
 
 from flask import Blueprint, request, jsonify
 from app.models import Payment
-from app.config.db_config import db
+from config import db
 
 payment_bp = Blueprint('payment_bp', __name__)
 
